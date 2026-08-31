@@ -13,11 +13,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
+    
     <title>ctc motors</title>
     <link
       rel="canonical"
       href="https://getbootstrap.com/docs/5.3/examples/sidebars/"
     />
+    
     <script src="/js/color-modes.js"></script>
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
     <meta name="theme-color" content="#712cf9" />
@@ -94,6 +96,9 @@
       }
       .bd-mode-toggle .dropdown-menu .active .bi {
         display: block !important;
+      }
+      .small-sidebar{
+        width:30%;
       }
     </style>
   </head>
@@ -247,21 +252,21 @@
       <!-- / final Sidebar/ -->
       <div
         class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
-        style="width: 20%"
+        style="width:10%" id="sidebarId"
       >
         <a
           href="/"
           class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
         >
-          <div style="margin-right: 15px; font-size: 30px; color: #d21111">
+          <div style="margin-right: 15px; font-size: 15px; color: #d21111">
             <i class="bi bi-fire"></i>
           </div>
-          <span class="fs-1 fw-bolder">c.t.c</span>
+          <span class="fs-5 fw-bolder">c.t.c</span>
         </a>
         <hr />
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
-            <a href="/" class="nav-link active" aria-current="page">
+            <a href="/" class="nav-link  active"  aria-current="page">
               <svg
                 class="bi pe-none me-2"
                 width="16"
@@ -270,35 +275,11 @@
               >
                 <use xlink:href="#home"></use>
               </svg>
-              Home
+              <span style="display: none; ">Home</span> 
             </a>
           </li>
-          <li>
-            <a href="#" class="nav-link text-white">
-              <svg
-                class="bi pe-none me-2"
-                width="16"
-                height="16"
-                aria-hidden="true"
-              >
-                <use xlink:href="#speedometer2"></use>
-              </svg>
-              Dashboard
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link text-white">
-              <svg
-                class="bi pe-none me-2"
-                width="16"
-                height="16"
-                aria-hidden="true"
-              >
-                <use xlink:href="#table"></use>
-              </svg>
-              Orders
-            </a>
-          </li>
+         
+           
           <li>
             <a href="products.html" class="nav-link text-white">
               <svg
@@ -309,11 +290,11 @@
               >
                 <use xlink:href="#grid"></use>
               </svg>
-              Products
+             <span style="display: none;"> Products</span>
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
+            <a href="customers.html" class="nav-link text-white">
               <svg
                 class="bi pe-none me-2"
                 width="16"
@@ -322,7 +303,7 @@
               >
                 <use xlink:href="#people-circle"></use>
               </svg>
-              Customers
+              <span style="display: none;">Customers</span>
             </a>
           </li>
         </ul>
@@ -341,7 +322,7 @@
               height="32"
               class="rounded-circle me-2"
             />
-            <strong>Admin ctc </strong>
+            <strong style="display: none;">Admin ctc </strong>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
             <li><a class="dropdown-item" href="#">New project...</a></li>
@@ -355,10 +336,13 @@
       <div class="b-example-divider b-example-vr"></div>
       <!-- //////////////// -->
 
-      <div style="width: 80%">
+      <div style="width: 90%">
         <!-- /navbar/ -->
 
         <nav class="navbar bg-body-tertiary">
+           <button class="btn" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
+              </button>
           <div
             class="container-fluid justify-content-center justify-content-md-between flex-column flex-md-row"
           >
@@ -402,41 +386,85 @@
               <td>test4</td>
               <td>test5</td>
               <td>
-                <a
-                  data-bs-toggle="tooltip "
+                  <a
+                  data-bs-toggle="tooltip"
                   data-bs-title="View user"
                   data-bs-placement="bottom"
                   class="btn btn-primary btn-sm"
                   href=""
                   ><i class="bi bi-eye"></i
                 ></a>
-
+              
                 <a
                   data-bs-toggle="tooltip"
                   data-bs-title="edit page"
                   data-bs-placement="bottom"
-                  class="btn btn btn-success btn-sm"
-                  href=""
+                  class="btn btn-success btn-sm"
+                  href="add customers.html"
                   ><i class="bi bi-pencil"></i
                 ></a>
 
-                <a
-                  data-bs-toggle="tooltip"
-                  data-bs-title="delete user"
-                  data-bs-placement="bottom"
-                  class="btn btn-danger btn-sm"
-                  href=""
-                  ><i class="bi bi-trash"></i
-                ></a>
+<!-- ************************************************************************ -->
+                <button type="button" data-bs-toggle="modal"
+                  ta-bs-target="#exampleModal" data-bs-toggle="tooltip"
+                    data-bs-title="delete user"
+                    data-bs-placement="bottom"
+                    class="btn btn-danger btn-sm" >
+                    <i class="bi bi-trash"></i>
+                </button> 
+<!-- ************************************************************************ -->
               </td>
             </tr>
           </tbody>
         </table>
         <!-- //////// -->
+
+         <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete user</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+           verify thid deletion❗
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- //////////// -->
+
+        
       </div>
     </main>
 
     <script src="./js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>
     <script src="js/sidebars.js" class="astro-vvvwv3sm"></script>
+    <script>
+      function toggleSidebar () {sidebarId.classList.toggle("small-sidebar");}
+        
+    </script>
   </body>
 </html>
